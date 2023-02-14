@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+
+   <!-- font style -->
+   <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat&family=Poppins&family=Roboto&family=Satisfy&display=swap" rel="stylesheet">
+   
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button onclick="handleProductChange('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+                           <button onclick="handleProductChange('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5 id="phone-total">$1219</h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button onclick="handleProductChange('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button onclick="handleProductChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5 id="case-total">$59</h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5 id="total-price">$1,278</h5>
+                        <h5 id="tax-amount">$0</h5>
+                        <h5 id="grand-total">$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <script>
+
+         // PART-1 ********** caseIncreae and caseDecrease starts here **********
+
+         // // এখানে একযোগ দেয়ার যে ফাংশন ওখানে একযোগ করার সিস্টেম তৈরি করতেছি
+         // document.getElementById('case-increase').addEventListener('click', function(){
+         //    // কেইজটা কোনজায়গায় আছে তা বের করতে একটা আইডি ব্যবহার করে খোজা হয়েছে 
+         //    const caseInput = document.getElementById('case-count');
+         //    // এখানে পূর্নসংখ্যা করার জন্য parseInt ব্যবহার করা হয়েছে 
+         //    const caseCount = parseInt(caseInput.value);
+         //    // এখানে সংখ্যার সাথে ১ বারানো হলো 
+         //    const caseNewCount = caseCount + 1;
+         //    // এখানে মানটা সেট করা হলো / এখানে ১ করে বাড়ানোর মান বাড়বে
+         //    caseInput.value = caseNewCount;
+         //    // এখানে কেসের টোটাল টাকা গুন করা হয়েছে 
+         //    const caseTotal = caseNewCount * 59;
+         //    // এখানে কেসের সংখ্যা অনুযায়ী দাম দির্ধারন করা হয়েছে 
+         //     document.getElementById('case-total').innerText = '$' + caseTotal;
+
+         // });
+
+         // document.getElementById('case-decrease').addEventListener('click', function(){
+         //   const caseInput = document.getElementById('case-count');
+         //   const caseCount = parseInt(caseInput.value);
+         //   const caseNewCount = caseCount - 1;
+         //   caseInput.value = caseNewCount;
+         //   const caseTotal = caseNewCount * 59;
+         //   document.getElementById('case-total').innerText = '$' + caseTotal;
+
+         // });
+
+         // PART-1 ********** caseIncrease and caseDecrease ends here **********
+
+
+
+         // PART-2 ********** caseIncrease and caseDecrease starts here **********
+
+         // নিচের কোডগুলো সম্পূর্ন না লিখে  handleProductChange(true) এই কোডটি কপি করে caseIncrease and caseDecrease এ বসালে সেইম কাজ করবে 
+
+         // document.getElementById('case-increase').addEventListener('click', function() {
+            //  handleProductChange(true); ***এই লাইনটা কপি করে উপরে বসানো হয়েছে 
+      
+         // });
+
+         // document.getElementById('case-decrease').addEventListener('click', function() {
+         //     handleProductChange(false);
+      
+         // });
+
+      //   function handleProductChange(isIncrease){
+      //     const caseInput = document.getElementById('case-count');
+      //     const caseCount = parseInt(caseInput.value);
+      //     // const caseNewCount = caseCount - 1;
+      //     let caseNewCount = caseCount; 
+      //     if(isIncrease == true){
+      //       caseNewCount = caseCount + 1;
+      //     }
+      //     // এখানে কেইস কাউন্ট ০ এর নিচে - এ যাবে না । 
+      //     if(isIncrease == false  && caseCount > 0){
+      //       caseNewCount = caseCount - 1;
+      //     }
+      //     caseInput.value = caseNewCount;
+      //     const caseTotal = caseNewCount * 59;
+      //     document.getElementById('case-total').innerText = '$' + caseTotal;
+
+      //    }
+
+         // PART-2 ********** caseIncrease and caseDecrease ends here **********
+         
+
+         // PART-1 ********** phoneIncrease and phoneDecrease starts here **********
+
+         // document.getElementById('phone-increase').addEventListener('click', function(){
+         //      handlePhoneChange(true);
+            
+         // });
+
+          // document.getElementById('phone-increase').addEventListener('click', function(){
+         //      handlePhoneChange(false);
+            
+         // });
+
+
+         // function handlePhoneChange(isIncrease) {
+         //       const phoneInput = document.getElementById('phone-count');
+         //       const phoneCount = parseInt(phoneInput.value);
+         //       // const phoneNewCount = phoneCount - 1;
+         //       let phoneNewCount = phoneCount;
+         //       if (isIncrease == true) {
+         //          phoneNewCount = phoneCount + 1;
+         //       }
+         //       // এখানে কেইস কাউন্ট ০ এর নিচে - এ যাবে না । 
+         //       if (isIncrease == false && phoneCount > 0) {
+         //          phoneNewCount = phoneCount - 1;
+         //       }
+         //       phoneInput.value = phoneNewCount;
+         //       const phoneTotal = phoneNewCount * 1219;
+         //       document.getElementById('phone-total').innerText = '$' + phoneTotal;
+
+         //    }
+                                       
+         // PART-1 ********** phoneIncrease and phoneDecrease ends here **********
+
+
+         // PART-1 ********** phoneIncrease & phoneDecrease and caseIncrease and caseDecrease add STARTS here **********
+              // এখানে উপরে ফোন ও কেইজকে একসাথে প্রডাক্ট নাম দিয়ে সংক্ষেপে করা হয়েছে 
+
+              function handleProductChange(product, isIncrease) {
+                  const productInput = document.getElementById(product + '-count');
+                  const productCount = parseInt(productInput.value);
+                  // const productNewCount = productCount - 1;
+                  let productNewCount = productCount;
+                  if (isIncrease == true) {
+                     productNewCount = productCount + 1;
+                  }
+                  // এখানে কেইস কাউন্ট ০ এর নিচে - এ যাবে না । 
+                  if (isIncrease == false && productCount > 0) {
+                     productNewCount = productCount - 1;
+                  }
+                  document.getElementById(product + '-count').value = productNewCount;
+                  // const caseTotal = productNewCount * 59;
+                  let productTotal = 0;
+                  if(product == 'phone'){
+                     productTotal = productNewCount * 1219;
+                  }
+                  if(product == 'case'){
+                     productTotal = productNewCount * 59;
+                  }
+
+                  document.getElementById(product + '-total').innerText = '$' + productTotal;
+                  calculateTotal();
+
+               }
+
+           // PART-1 ********** phoneIncrease & phoneDecrease and caseIncrease and caseDecrease add ends here **********
+
+
+          // PART-1 ********** calculateTotal part starts here **********
+
+         //  function calculateTotal(){
+
+         //    const phoneCount = getInputValue('product');
+
+         // //   const phoneInput = document.getElementById('phone-count');
+         // //   const phoneCount = parseInt(phoneInput.value);
+
+         //   const caseCount  = getInputValue('case');
+
+         // //   const caseInput = document.getElementById('case-count');
+         // //   const caseCount = parseInt(caseInput.value);
+
+         //   const totalPrice = phoneCount * 1219 + caseCount * 59;
+         //   document.getElementById('total-price').innerText = '$' + totalPrice;
+
+         //  }
+
+         //  function getInputValue(Product){
+         //     const productInput = document.getElementById(product + '-count');
+         //     const productCount = parseInt(productInput.value);
+         //     return productCount;
+            
+         //  }
+
+
+         function calculateTotal(){
+
+            // নিচের দুটো লাইন না লিখে  এই লাইনেও কাজ হবে কিন্তু এটা আপদত কাজ করতেছে না 
+            // const phoneCount = getInputValue('phone');
+
+            const phoneInput = document.getElementById('phone-count');
+            const phoneCount = parseInt(phoneInput.value);
+           
+            const caseCount = getInputValue('case');
+
+            // const caseInput = document.getElementById('case-count');
+            // const caseCount = parseInt(caseInput.value);
+
+            const totalPrice = phoneCount * 1219 + caseCount * 59;
+            document.getElementById('total-price').innerText = '$' + totalPrice;
+
+            const tax = Math.round(totalPrice * 0.1);
+            document.getElementById('tax-amount').innerText = '$' + tax;
+
+            const grandTotal = totalPrice + tax;
+            document.getElementById('grand-total').innerText = '$' + grandTotal;
+
+         }
+         
+
+
+         function getInputValue(product){
+              const productInput = document.getElementById(product + '-count');
+              const productCount = parseInt(productInput.value);
+              return productCount; 
+
+         }
+
+          // PART-1 ********** calculateTotal part ends here **********
+
+
+
+      </script>
+   </section>
+    
+</body>
+
+</html>
